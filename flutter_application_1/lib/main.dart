@@ -7,8 +7,23 @@ void main() {
 }
 
 // 3. 'MyApp'이라는 이름의 위젯을 만듭니다.
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String message = '안녕하세요, Flutter!';
+
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +48,9 @@ class MyApp extends StatelessWidget {
               Container(
                 color: Colors.grey[200],
                 padding: const EdgeInsets.all(16.0),
-                child: const Text(
-                  '안녕하세요, Flutter!',
-                  style: TextStyle(
+                child: Text(
+                  message,
+                  style: const TextStyle(
                     fontSize: 28,
                     color: Colors.red,
                     fontWeight: FontWeight.bold,
@@ -43,15 +58,28 @@ class MyApp extends StatelessWidget {
                 ),
               ),
 
+              Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: TextField(
+                  controller: _controller,
+                  decoration: const InputDecoration(
+                    labelText: '여기에 입력하세요...',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
+
               // 6. [추가] 박스와 버튼 사이에 '간격'을 주는 빈 박스
-              const SizedBox(height: 30),
+              const SizedBox(height: 10),
 
               // 7. [추가] Column의 두 번째 자식: 클릭 가능한 버튼
               ElevatedButton(
                 // 8. [필수] 버튼을 '눌렀을 때' 실행될 동작
                 onPressed: () {
                   // 이 코드가 실행되면 VS Code의 'DEBUG CONSOLE'에 글자가 찍힘
-                  print('버튼이 클릭되었습니다!');
+                  setState(() {
+                    message = _controller.text;
+                  });
                 },
                 // 9. 버튼에 표시될 글자
                 child: const Text('눌러보세요!'),
