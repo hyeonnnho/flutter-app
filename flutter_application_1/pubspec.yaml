@@ -31,10 +31,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  # --- 여기 있는 3개만 남기세요 ---
   cupertino_icons: ^1.0.8
+  camera: ^0.10.5+9
+  google_mlkit_pose_detection: ^0.10.0
+  # ----------------------------
 
+  # (밑에 주석과 함께 또 적혀있던 cupertino_icons... 부분은 지우세요!)
 dev_dependencies:
   flutter_test:
     sdk: flutter
