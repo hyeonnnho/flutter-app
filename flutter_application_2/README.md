@@ -1,4 +1,4 @@
-# flutter_application_1
+# flutter_application_2
 
 A new Flutter project.
 
@@ -16,9 +16,7 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-## bash에 아이폰 실행 하는 명령어
-- open -a Simulator
-
-## flutter 실행
+## 설정 파일 건드렸을 경우
+- flutter clean : 청소
+- flutter pub get : 다시 패키지 가져오기
 - flutter run
-
